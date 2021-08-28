@@ -4,7 +4,7 @@ export default [
         data: {},
         items:
         [
-            { name: 'lennaTexture', source: '/assets/lenna.png', type: 'texture' },
+            { name: 'baked1Texture', source: '/assets/baked1.png', type: 'texture' },
             { name: 'roomModel', source: '/assets/roomModel.glb' },
         ]
     }
