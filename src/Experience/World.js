@@ -35,7 +35,7 @@ export default class World
 
         this.room.model = this.resources.items.roomModel.scene
 
-        this.room.texture = this.resources.items.baked1Texture
+        this.room.texture = this.resources.items.bakedTexture
         this.room.texture.encoding = THREE.sRGBEncoding
         this.room.texture.flipY = false
 
