@@ -61,6 +61,8 @@ export default class Navigation
          */
         this.view.onMouseDown = (_event) =>
         {
+            _event.preventDefault()
+
             this.view.down(_event.clientX, _event.clientY)
 
             window.addEventListener('mouseup', this.view.onMouseUp)
@@ -69,11 +71,15 @@ export default class Navigation
 
         this.view.onMouseMove = (_event) =>
         {
+            _event.preventDefault()
+            
             this.view.move(_event.clientX, _event.clientY)
         }
 
-        this.view.onMouseUp = () =>
+        this.view.onMouseUp = (_event) =>
         {
+            _event.preventDefault()
+            
             this.view.up()
 
             window.removeEventListener('mouseup', this.view.onMouseUp)
@@ -81,6 +87,48 @@ export default class Navigation
         }
 
         window.addEventListener('mousedown', this.view.onMouseDown)
+        
+        /**
+         * Touch events
+         */
+        this.view.onTouchStart = (_event) =>
+        {
+            _event.preventDefault()
+
+            this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
+
+            window.addEventListener('touchend', this.view.onTouchEnd)
+            window.addEventListener('touchmove', this.view.onTouchMove)
+        }
+
+        this.view.onTouchMove = (_event) =>
+        {
+            _event.preventDefault()
+            
+            this.view.move(_event.touches[0].clientX, _event.touches[0].clientY)
+        }
+
+        this.view.onTouchEnd = (_event) =>
+        {
+            _event.preventDefault()
+            
+            this.view.up()
+
+            window.removeEventListener('touchend', this.view.onTouchEnd)
+            window.removeEventListener('touchmove', this.view.onTouchMove)
+        }
+
+        window.addEventListener('touchstart', this.view.onTouchStart)
+
+        /**
+         * Context menu
+         */
+        this.view.onContextMenu = (_event) =>
+        {
+            _event.preventDefault()
+        }
+        
+        window.addEventListener('contextmenu', this.view.onContextMenu)
     }
 
     update()
