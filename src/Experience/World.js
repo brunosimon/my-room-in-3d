@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import GoogleLeds from './GoogleLeds.js'
 
 export default class World
 {
@@ -16,6 +17,7 @@ export default class World
             {
                 // this.setDummy()
                 this.setRoom()
+                this.setGoogleLeds()
             }
         })
     }
@@ -56,12 +58,19 @@ export default class World
         this.scene.add(directionalLight)
     }
 
+    setGoogleLeds()
+    {
+        this.googleLeds = new GoogleLeds()
+    }
+
     resize()
     {
     }
 
     update()
     {
+        if(this.googleLeds)
+            this.googleLeds.update()
     }
 
     destroy()

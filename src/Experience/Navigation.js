@@ -33,7 +33,7 @@ export default class Navigation
         this.view.target.smoothing = 0.005
         this.view.target.limits = {}
         this.view.target.limits.x = { min: - 4, max: 4 }
-        this.view.target.limits.y = { min: 1, max: 4 }
+        this.view.target.limits.y = { min: 1, max: 6 }
         this.view.target.limits.z = { min: - 4, max: 4 }
 
         this.view.drag = {}
@@ -85,7 +85,7 @@ export default class Navigation
         {
             _event.preventDefault()
 
-            this.view.drag.alternative = _event.button === 2 || _event.ctrlKey || _event.shiftKey
+            this.view.drag.alternative = _event.button === 2 || _event.button === 1 || _event.ctrlKey || _event.shiftKey
 
             this.view.down(_event.clientX, _event.clientY)
 
