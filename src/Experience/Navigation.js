@@ -7,6 +7,7 @@ export default class Navigation
     constructor()
     {
         this.experience = new Experience()
+        this.targetElement = this.experience.targetElement
         this.camera = this.experience.camera
         this.config = this.experience.config
         this.time = this.experience.time
@@ -20,15 +21,21 @@ export default class Navigation
 
         this.view.spherical = {}
         this.view.spherical.value = new THREE.Spherical(30, Math.PI * 0.35, - Math.PI * 0.25)
+
+        this.view.spherical.value.radius = 5
+
         this.view.spherical.smoothed = this.view.spherical.value.clone()
         this.view.spherical.smoothing = 0.005
         this.view.spherical.limits = {}
-        this.view.spherical.limits.radius = { min: 10, max: 50 }
+        this.view.spherical.limits.radius = { min: 5, max: 50 }
         this.view.spherical.limits.phi = { min: 0.01, max: Math.PI * 0.5 }
         this.view.spherical.limits.theta = { min: - Math.PI * 0.5, max: 0 }
 
         this.view.target = {}
         this.view.target.value = new THREE.Vector3(0, 2, 0)
+
+        this.view.target.value.set(-3, 3, -3)
+
         this.view.target.smoothed = this.view.target.value.clone()
         this.view.target.smoothing = 0.005
         this.view.target.limits = {}
@@ -110,7 +117,7 @@ export default class Navigation
             window.removeEventListener('mousemove', this.view.onMouseMove)
         }
 
-        window.addEventListener('mousedown', this.view.onMouseDown)
+        this.targetElement.addEventListener('mousedown', this.view.onMouseDown)
         
         /**
          * Touch events

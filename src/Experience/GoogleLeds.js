@@ -47,8 +47,6 @@ export default class GoogleLeds
 
             return 0
         })
-
-        console.log(children)
         
         let i = 0
         for(const _child of children)

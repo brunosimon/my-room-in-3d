@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import GoogleLeds from './GoogleLeds.js'
+import CoffeeSteam from './CoffeeSteam.js'
 
 export default class World
 {
@@ -18,6 +19,7 @@ export default class World
                 // this.setDummy()
                 this.setRoom()
                 this.setGoogleLeds()
+                this.setCoffeeSteam()
             }
         })
     }
@@ -63,6 +65,11 @@ export default class World
         this.googleLeds = new GoogleLeds()
     }
 
+    setCoffeeSteam()
+    {
+        this.coffeeSteam = new CoffeeSteam()
+    }
+
     resize()
     {
     }
@@ -71,6 +78,9 @@ export default class World
     {
         if(this.googleLeds)
             this.googleLeds.update()
+
+        if(this.coffeeSteam)
+            this.coffeeSteam.update()
     }
 
     destroy()
