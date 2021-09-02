@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import GoogleLeds from './GoogleLeds.js'
+import LoupedeckButtons from './LoupedeckButtons.js'
 import CoffeeSteam from './CoffeeSteam.js'
 
 export default class World
@@ -19,6 +20,7 @@ export default class World
                 // this.setDummy()
                 this.setRoom()
                 this.setGoogleLeds()
+                this.setLoupedeckButtons()
                 this.setCoffeeSteam()
             }
         })
@@ -65,6 +67,11 @@ export default class World
         this.googleLeds = new GoogleLeds()
     }
 
+    setLoupedeckButtons()
+    {
+        this.loupedeckButtons = new LoupedeckButtons()
+    }
+
     setCoffeeSteam()
     {
         this.coffeeSteam = new CoffeeSteam()
@@ -78,6 +85,9 @@ export default class World
     {
         if(this.googleLeds)
             this.googleLeds.update()
+
+        if(this.loupedeckButtons)
+            this.loupedeckButtons.update()
 
         if(this.coffeeSteam)
             this.coffeeSteam.update()
