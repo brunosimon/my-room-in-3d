@@ -3,6 +3,7 @@ import Experience from './Experience.js'
 import GoogleLeds from './GoogleLeds.js'
 import LoupedeckButtons from './LoupedeckButtons.js'
 import CoffeeSteam from './CoffeeSteam.js'
+import TopChair from './TopChair.js'
 
 export default class World
 {
@@ -22,6 +23,7 @@ export default class World
                 this.setGoogleLeds()
                 this.setLoupedeckButtons()
                 this.setCoffeeSteam()
+                this.setTopChair()
             }
         })
     }
@@ -56,10 +58,6 @@ export default class World
         })
 
         this.scene.add(this.room.model)
-
-        const directionalLight = new THREE.DirectionalLight('#ffffff', 3)
-        directionalLight.position.set(5, 5, 5)
-        this.scene.add(directionalLight)
     }
 
     setGoogleLeds()
@@ -77,6 +75,11 @@ export default class World
         this.coffeeSteam = new CoffeeSteam()
     }
 
+    setTopChair()
+    {
+        this.topChair = new TopChair()
+    }
+
     resize()
     {
     }
@@ -91,6 +94,9 @@ export default class World
 
         if(this.coffeeSteam)
             this.coffeeSteam.update()
+
+        if(this.topChair)
+            this.topChair.update()
     }
 
     destroy()
