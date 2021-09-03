@@ -4,6 +4,7 @@ import GoogleLeds from './GoogleLeds.js'
 import LoupedeckButtons from './LoupedeckButtons.js'
 import CoffeeSteam from './CoffeeSteam.js'
 import TopChair from './TopChair.js'
+import ElgatoLight from './ElgatoLight.js'
 import BouncingLogo from './BouncingLogo.js'
 
 export default class World
@@ -25,6 +26,7 @@ export default class World
                 this.setLoupedeckButtons()
                 this.setCoffeeSteam()
                 this.setTopChair()
+                this.setElgatoLight()
                 this.setBouncingLogo()
             }
         })
@@ -80,6 +82,11 @@ export default class World
     setTopChair()
     {
         this.topChair = new TopChair()
+    }
+
+    setElgatoLight()
+    {
+        this.elgatoLight = new ElgatoLight()
     }
 
     setBouncingLogo()

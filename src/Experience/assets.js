@@ -13,6 +13,8 @@ export default [
             
             { name: 'coffeeSteamModel', source: '/assets/coffeeSteamModel.glb', type: 'model' },
             
+            { name: 'elgatoLightModel', source: '/assets/elgatoLightModel.glb', type: 'model' },
+            
             { name: 'threejsJourneyLogoTexture', source: '/assets/threejsJourneyLogo.png', type: 'texture' },
             
             { name: 'bakedTexture', source: '/assets/baked.jpg', type: 'texture' },
