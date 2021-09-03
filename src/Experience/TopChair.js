@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { gsap } from 'gsap'
 
 import Experience from './Experience.js'
 
@@ -14,17 +13,7 @@ export default class TopChair
         this.world = this.experience.world
         this.time = this.experience.time
 
-        // Debug
-        if(this.debug)
-        {
-            this.debugFolder = this.debug.addFolder({
-                title: 'topChair',
-                expanded: true
-            })
-        }
-
         this.setModel()
-        this.setAnimation()
     }
 
     setModel()
@@ -41,11 +30,6 @@ export default class TopChair
                 _child.material = this.world.room.material
             }
         })
-    }
-
-    setAnimation()
-    {
-        this.animation = {}
     }
 
     update()

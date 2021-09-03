@@ -4,6 +4,7 @@ import GoogleLeds from './GoogleLeds.js'
 import LoupedeckButtons from './LoupedeckButtons.js'
 import CoffeeSteam from './CoffeeSteam.js'
 import TopChair from './TopChair.js'
+import BouncingLogo from './BouncingLogo.js'
 
 export default class World
 {
@@ -24,6 +25,7 @@ export default class World
                 this.setLoupedeckButtons()
                 this.setCoffeeSteam()
                 this.setTopChair()
+                this.setBouncingLogo()
             }
         })
     }
@@ -80,6 +82,11 @@ export default class World
         this.topChair = new TopChair()
     }
 
+    setBouncingLogo()
+    {
+        this.bouncingLogo = new BouncingLogo()
+    }
+
     resize()
     {
     }
@@ -97,6 +104,9 @@ export default class World
 
         if(this.topChair)
             this.topChair.update()
+
+        if(this.bouncingLogo)
+            this.bouncingLogo.update()
     }
 
     destroy()
