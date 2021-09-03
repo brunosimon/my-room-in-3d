@@ -17,6 +17,10 @@ export default [
             
             { name: 'threejsJourneyLogoTexture', source: '/assets/threejsJourneyLogo.png', type: 'texture' },
             
+            { name: 'pcScreenModel', source: '/assets/pcScreenModel.glb', type: 'model' },
+            
+            { name: 'macScreenModel', source: '/assets/macScreenModel.glb', type: 'model' },
+            
             { name: 'bakedTexture', source: '/assets/baked.jpg', type: 'texture' },
             { name: 'roomModel', source: '/assets/roomModel.glb' },
         ]
