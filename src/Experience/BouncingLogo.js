@@ -169,12 +169,24 @@ export default class BouncingLogo
         this.animations.z += this.animations.speed.z * this.time.delta
         this.animations.y += this.animations.speed.y * this.time.delta
 
-        if(this.animations.z > this.animations.limits.z.max || this.animations.z < this.animations.limits.z.min)
+        if(this.animations.z > this.animations.limits.z.max)
         {
+            this.animations.z = this.animations.limits.z.max
             this.animations.speed.z *= -1
         }
-        if(this.animations.y > this.animations.limits.y.max || this.animations.y < this.animations.limits.y.min)
+        if(this.animations.z < this.animations.limits.z.min)
         {
+            this.animations.z = this.animations.limits.z.min
+            this.animations.speed.z *= -1
+        }
+        if(this.animations.y > this.animations.limits.y.max)
+        {
+            this.animations.y = this.animations.limits.y.max
+            this.animations.speed.y *= -1
+        }
+        if(this.animations.y < this.animations.limits.y.min)
+        {
+            this.animations.y = this.animations.limits.y.min
             this.animations.speed.y *= -1
         }
 
