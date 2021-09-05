@@ -3,7 +3,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "webpack --config ./bundler/webpack.prod.js",
-    "dev": "webpack serve --config ./bundler/webpack.dev.js"
+    "dev": "webpack serve --config ./bundler/webpack.dev.js",
+    "prod": "git switch prod; git merge main; git push; git switch main"
   },
   "dependencies": {
     "@babel/core": "^7.14.6",
@@ -13,6 +14,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
+    "glsl-blend": "^1.0.3",
     "glslify-loader": "^2.0.0",
     "gsap": "^3.7.1",
     "html-loader": "^2.1.2",

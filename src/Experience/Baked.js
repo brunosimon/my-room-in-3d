@@ -40,9 +40,9 @@ export default class CoffeeSteam
         this.model.lightMapTexture.flipY = false
 
         this.colors = {}
-        this.colors.tv = '#de11ff'
-        this.colors.desk = '#ff7c00'
-        this.colors.pc = '#4cbdff'
+        this.colors.tv = '#ff115e'
+        this.colors.desk = '#ff9b00'
+        this.colors.pc = '#0082ff'
 
         this.model.material = new THREE.ShaderMaterial({
             uniforms:
@@ -54,10 +54,10 @@ export default class CoffeeSteam
                 uLightTvStrength: { value: 1.47 },
 
                 uLightDeskColor: { value: new THREE.Color(this.colors.desk) },
-                uLightDeskStrength: { value: 1.86 },
+                uLightDeskStrength: { value: 1.36 },
 
                 uLightPcColor: { value: new THREE.Color(this.colors.pc) },
-                uLightPcStrength: { value: 1.27 }
+                uLightPcStrength: { value: 1.4 }
             },
             vertexShader: vertexShader,
             fragmentShader: fragmentShader
