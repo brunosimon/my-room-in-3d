@@ -1,5 +1,8 @@
-uniform sampler2D uBakedTexture;
+uniform sampler2D uBakedDayTexture;
+uniform sampler2D uBakedNightTexture;
 uniform sampler2D uLightMapTexture;
+
+uniform float uMix;
 
 uniform vec3 uLightTvColor;
 uniform float uLightTvStrength;
@@ -19,7 +22,9 @@ varying vec2 vUv;
 
 void main()
 {
-    vec3 bakedColor = texture2D(uBakedTexture, vUv).rgb;
+    vec3 bakedDayColor = texture2D(uBakedDayTexture, vUv).rgb;
+    vec3 bakedNightColor = texture2D(uBakedNightTexture, vUv).rgb;
+    vec3 bakedColor = mix(bakedDayColor, bakedNightColor, uMix);
     vec3 lightMapColor = texture2D(uLightMapTexture, vUv).rgb;
 
     float lightTvStrength = lightMapColor.r * uLightTvStrength;

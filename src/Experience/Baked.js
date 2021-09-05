@@ -32,9 +32,13 @@ export default class CoffeeSteam
         
         this.model.mesh = this.resources.items.roomModel.scene.children[0]
 
-        this.model.bakedTexture = this.resources.items.bakedTexture
-        this.model.bakedTexture.encoding = THREE.sRGBEncoding
-        this.model.bakedTexture.flipY = false
+        this.model.bakedDayTexture = this.resources.items.bakedDayTexture
+        this.model.bakedDayTexture.encoding = THREE.sRGBEncoding
+        this.model.bakedDayTexture.flipY = false
+
+        this.model.bakedNightTexture = this.resources.items.bakedNightTexture
+        this.model.bakedNightTexture.encoding = THREE.sRGBEncoding
+        this.model.bakedNightTexture.flipY = false
 
         this.model.lightMapTexture = this.resources.items.lightMapTexture
         this.model.lightMapTexture.flipY = false
@@ -47,8 +51,11 @@ export default class CoffeeSteam
         this.model.material = new THREE.ShaderMaterial({
             uniforms:
             {
-                uBakedTexture: { value: this.model.bakedTexture },
+                uBakedDayTexture: { value: this.model.bakedDayTexture },
+                uBakedNightTexture: { value: this.model.bakedNightTexture },
                 uLightMapTexture: { value: this.model.lightMapTexture },
+
+                uMix: { value: 1 },
 
                 uLightTvColor: { value: new THREE.Color(this.colors.tv) },
                 uLightTvStrength: { value: 1.47 },
@@ -76,6 +83,13 @@ export default class CoffeeSteam
         // Debug
         if(this.debug)
         {
+            this.debugFolder
+                .addInput(
+                    this.model.material.uniforms.uMix,
+                    'value',
+                    { label: 'uMix', min: 0, max: 1 }
+                )
+
             this.debugFolder
                 .addInput(
                     this.colors,
