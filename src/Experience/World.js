@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import Baked from './Baked.js'
 import GoogleLeds from './GoogleLeds.js'
 import LoupedeckButtons from './LoupedeckButtons.js'
 import CoffeeSteam from './CoffeeSteam.js'
@@ -21,8 +22,7 @@ export default class World
         {
             if(_group.name === 'base')
             {
-                // this.setDummy()
-                this.setRoom()
+                this.setBaked()
                 this.setGoogleLeds()
                 this.setLoupedeckButtons()
                 this.setCoffeeSteam()
@@ -34,36 +34,9 @@ export default class World
         })
     }
 
-    // setDummy()
-    // {
-    //     const cube = new THREE.Mesh(
-    //         new THREE.BoxGeometry(1, 1, 1),
-    //         new THREE.MeshBasicMaterial({ map: this.resources.items.lennaTexture })
-    //     )
-    //     this.scene.add(cube)        
-    // }
-
-    setRoom()
+    setBaked()
     {
-        this.room = {}
-
-        this.room.model = this.resources.items.roomModel.scene
-
-        this.room.texture = this.resources.items.bakedTexture
-        this.room.texture.encoding = THREE.sRGBEncoding
-        this.room.texture.flipY = false
-
-        this.room.material = new THREE.MeshBasicMaterial({ map: this.room.texture })
-
-        this.room.model.traverse((_child) =>
-        {
-            if(_child instanceof THREE.Mesh)
-            {
-                _child.material = this.room.material
-            }
-        })
-
-        this.scene.add(this.room.model)
+        this.baked = new Baked()
     }
 
     setGoogleLeds()
@@ -104,7 +77,7 @@ export default class World
         )
         this.macScreen = new Screen(
             this.resources.items.macScreenModel.scene.children[0],
-            '/assets/videoPortfolio.mp4'
+            '/assets/videoStream.mp4'
         )
     }
 

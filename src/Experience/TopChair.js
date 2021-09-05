@@ -27,7 +27,7 @@ export default class TopChair
         {
             if(_child instanceof THREE.Mesh)
             {
-                _child.material = this.world.room.material
+                _child.material = this.world.baked.model.material
             }
         })
     }
