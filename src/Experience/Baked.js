@@ -49,7 +49,7 @@ export default class CoffeeSteam
 
         this.colors = {}
         this.colors.tv = '#ff115e'
-        this.colors.desk = '#ff9b00'
+        this.colors.desk = '#ff6700'
         this.colors.pc = '#0082ff'
 
         this.model.material = new THREE.ShaderMaterial({
@@ -67,7 +67,7 @@ export default class CoffeeSteam
                 uLightTvStrength: { value: 1.47 },
 
                 uLightDeskColor: { value: new THREE.Color(this.colors.desk) },
-                uLightDeskStrength: { value: 1.36 },
+                uLightDeskStrength: { value: 1.9 },
 
                 uLightPcColor: { value: new THREE.Color(this.colors.pc) },
                 uLightPcStrength: { value: 1.4 }

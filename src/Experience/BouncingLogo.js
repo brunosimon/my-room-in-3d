@@ -18,7 +18,7 @@ export default class BouncingLogo
         {
             this.debugFolder = this.debug.addFolder({
                 title: 'bouncingLogo',
-                expanded: true
+                expanded: false
             })
         }
 
@@ -44,6 +44,7 @@ export default class BouncingLogo
 
         this.model.material = new THREE.MeshBasicMaterial({
             transparent: true,
+            premultipliedAlpha: true,
             map: this.model.texture
         })
 
