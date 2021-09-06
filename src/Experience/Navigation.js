@@ -122,6 +122,8 @@ export default class Navigation
         {
             _event.preventDefault()
 
+            this.view.drag.alternative = _event.touches.length > 1
+
             this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
 
             window.addEventListener('touchend', this.view.onTouchEnd)
