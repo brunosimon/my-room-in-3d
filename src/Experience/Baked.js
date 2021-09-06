@@ -40,6 +40,10 @@ export default class CoffeeSteam
         this.model.bakedNightTexture.encoding = THREE.sRGBEncoding
         this.model.bakedNightTexture.flipY = false
 
+        this.model.bakedNeutralTexture = this.resources.items.bakedNeutralTexture
+        this.model.bakedNeutralTexture.encoding = THREE.sRGBEncoding
+        this.model.bakedNeutralTexture.flipY = false
+
         this.model.lightMapTexture = this.resources.items.lightMapTexture
         this.model.lightMapTexture.flipY = false
 
@@ -53,9 +57,11 @@ export default class CoffeeSteam
             {
                 uBakedDayTexture: { value: this.model.bakedDayTexture },
                 uBakedNightTexture: { value: this.model.bakedNightTexture },
+                uBakedNeutralTexture: { value: this.model.bakedNeutralTexture },
                 uLightMapTexture: { value: this.model.lightMapTexture },
 
-                uMix: { value: 1 },
+                uNightMix: { value: 1 },
+                uNeutralMix: { value: 0 },
 
                 uLightTvColor: { value: new THREE.Color(this.colors.tv) },
                 uLightTvStrength: { value: 1.47 },
@@ -85,9 +91,16 @@ export default class CoffeeSteam
         {
             this.debugFolder
                 .addInput(
-                    this.model.material.uniforms.uMix,
+                    this.model.material.uniforms.uNightMix,
                     'value',
-                    { label: 'uMix', min: 0, max: 1 }
+                    { label: 'uNightMix', min: 0, max: 1 }
+                )
+
+            this.debugFolder
+                .addInput(
+                    this.model.material.uniforms.uNeutralMix,
+                    'value',
+                    { label: 'uNeutralMix', min: 0, max: 1 }
                 )
 
             this.debugFolder

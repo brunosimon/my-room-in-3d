@@ -19,7 +19,7 @@ export default class CoffeeSteam
         {
             this.debugFolder = this.debug.addFolder({
                 title: 'coffeeSteam',
-                expanded: true
+                expanded: false
             })
         }
 
