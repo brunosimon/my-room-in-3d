@@ -18,7 +18,7 @@ export default class CoffeeSteam
         if(this.debug)
         {
             this.debugFolder = this.debug.addFolder({
-                title: 'baked',
+                title: '烘焙',
                 expanded: true
             })
         }
@@ -93,7 +93,7 @@ export default class CoffeeSteam
                 .addInput(
                     this.model.material.uniforms.uNightMix,
                     'value',
-                    { label: 'uNightMix', min: 0, max: 1 }
+                    { label: '全局照明', min: 0, max: 1 }
                 )
 
             this.debugFolder
