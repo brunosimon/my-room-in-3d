@@ -6,7 +6,6 @@ import LoupedeckButtons from './LoupedeckButtons.js'
 import CoffeeSteam from './CoffeeSteam.js'
 import TopChair from './TopChair.js'
 import ElgatoLight from './ElgatoLight.js'
-import BouncingLogo from './BouncingLogo.js'
 import Screen from './Screen.js'
 
 export default class World
@@ -28,7 +27,6 @@ export default class World
                 this.setCoffeeSteam()
                 this.setTopChair()
                 this.setElgatoLight()
-                this.setBouncingLogo()
                 this.setScreens()
             }
         })
@@ -64,20 +62,16 @@ export default class World
         this.elgatoLight = new ElgatoLight()
     }
 
-    setBouncingLogo()
-    {
-        this.bouncingLogo = new BouncingLogo()
-    }
 
     setScreens()
     {
         this.pcScreen = new Screen(
             this.resources.items.pcScreenModel.scene.children[0],
-            '/assets/videoPortfolio.mp4'
+            '/assets/pcScreen.png'
         )
         this.macScreen = new Screen(
             this.resources.items.macScreenModel.scene.children[0],
-            '/assets/videoStream.mp4'
+            '/assets/miniPc.png'
         )
     }
 
@@ -99,8 +93,6 @@ export default class World
         if(this.topChair)
             this.topChair.update()
 
-        if(this.bouncingLogo)
-            this.bouncingLogo.update()
     }
 
     destroy()
