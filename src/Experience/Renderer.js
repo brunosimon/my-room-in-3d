@@ -3,10 +3,8 @@ import Experience from './Experience.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 
-export default class Renderer
-{
-    constructor(_options = {})
-    {
+export default class Renderer {
+    constructor(_options = {}) {
         this.experience = new Experience()
         this.config = this.experience.config
         this.debug = this.experience.debug
@@ -22,8 +20,7 @@ export default class Renderer
         this.setPostProcess()
     }
 
-    setInstance()
-    {
+    setInstance() {
         this.clearColor = '#010101'
 
         // Renderer
@@ -37,42 +34,30 @@ export default class Renderer
         this.instance.domElement.style.width = '100%'
         this.instance.domElement.style.height = '100%'
 
-        // this.instance.setClearColor(0x414141, 1)
         this.instance.setClearColor(this.clearColor, 1)
         this.instance.setSize(this.config.width, this.config.height)
         this.instance.setPixelRatio(this.config.pixelRatio)
-
-        // this.instance.physicallyCorrectLights = true
-        // this.instance.gammaOutPut = true
         this.instance.outputEncoding = THREE.sRGBEncoding
-        // this.instance.shadowMap.type = THREE.PCFSoftShadowMap
-        // this.instance.shadowMap.enabled = false
-        // this.instance.toneMapping = THREE.ReinhardToneMapping
-        // this.instance.toneMappingExposure = 1.3
 
         this.context = this.instance.getContext()
 
-        // Add stats panel
-        if(this.stats)
-        {
+        // Add stats panel if exists
+        if (this.stats) {
             this.stats.setRenderPanel(this.context)
         }
     }
 
-    setPostProcess()
-    {
+    setPostProcess() {
         this.postProcess = {}
 
-        /**
-         * Render pass
-         */
+        // Render pass
         this.postProcess.renderPass = new RenderPass(this.scene, this.camera.instance)
 
-        /**
-         * Effect composer
-         */
-        const RenderTargetClass = this.config.pixelRatio >= 2 ? THREE.WebGLRenderTarget : THREE.WebGLMultisampleRenderTarget
-        // const RenderTargetClass = THREE.WebGLRenderTarget
+        // Modern safe selection of render target class
+        const RenderTargetClass = (THREE.WebGLMultisampleRenderTarget && this.instance.capabilities.isWebGL2)
+            ? THREE.WebGLMultisampleRenderTarget
+            : THREE.WebGLRenderTarget
+
         this.renderTarget = new RenderTargetClass(
             this.config.width,
             this.config.height,
@@ -84,52 +69,49 @@ export default class Renderer
                 encoding: THREE.sRGBEncoding
             }
         )
+
+        // Effect composer
         this.postProcess.composer = new EffectComposer(this.instance, this.renderTarget)
         this.postProcess.composer.setSize(this.config.width, this.config.height)
         this.postProcess.composer.setPixelRatio(this.config.pixelRatio)
-
         this.postProcess.composer.addPass(this.postProcess.renderPass)
     }
 
-    resize()
-    {
-        // Instance
+    resize() {
+        // Renderer size
         this.instance.setSize(this.config.width, this.config.height)
         this.instance.setPixelRatio(this.config.pixelRatio)
 
-        // Post process
-        this.postProcess.composer.setSize(this.config.width, this.config.height)
-        this.postProcess.composer.setPixelRatio(this.config.pixelRatio)
+        // Post process size
+        if (this.postProcess.composer) {
+            this.postProcess.composer.setSize(this.config.width, this.config.height)
+            this.postProcess.composer.setPixelRatio(this.config.pixelRatio)
+        }
     }
 
-    update()
-    {
-        if(this.stats)
-        {
-            this.stats.beforeRender()
-        }
+    update() {
+        if (this.stats) this.stats.beforeRender()
 
-        if(this.usePostprocess)
-        {
+        if (this.usePostprocess && this.postProcess.composer) {
             this.postProcess.composer.render()
-        }
-        else
-        {
+        } else {
             this.instance.render(this.scene, this.camera.instance)
         }
 
-        if(this.stats)
-        {
-            this.stats.afterRender()
-        }
+        if (this.stats) this.stats.afterRender()
     }
 
-    destroy()
-    {
-        this.instance.renderLists.dispose()
-        this.instance.dispose()
-        this.renderTarget.dispose()
-        this.postProcess.composer.renderTarget1.dispose()
-        this.postProcess.composer.renderTarget2.dispose()
+    destroy() {
+        if (this.instance) {
+            this.instance.renderLists.dispose()
+            this.instance.dispose()
+        }
+
+        if (this.renderTarget) this.renderTarget.dispose()
+
+        if (this.postProcess.composer) {
+            if (this.postProcess.composer.renderTarget1) this.postProcess.composer.renderTarget1.dispose()
+            if (this.postProcess.composer.renderTarget2) this.postProcess.composer.renderTarget2.dispose()
+        }
     }
 }

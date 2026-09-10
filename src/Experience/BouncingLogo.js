@@ -56,7 +56,7 @@ export default class BouncingLogo
         // Debug
         if(this.debug)
         {
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.group.position,
                 'x',
                 {
@@ -64,7 +64,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.group.position,
                 'y',
                 {
@@ -72,7 +72,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.group.position,
                 'z',
                 {
@@ -80,7 +80,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.mesh.scale,
                 'z',
                 {
@@ -88,7 +88,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.mesh.scale,
                 'y',
                 {
@@ -115,7 +115,7 @@ export default class BouncingLogo
 
         if(this.debug)
         {
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.animations.limits.z,
                 'min',
                 {
@@ -123,7 +123,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.animations.limits.z,
                 'max',
                 {
@@ -131,7 +131,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.animations.limits.y,
                 'min',
                 {
@@ -139,7 +139,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.animations.limits.y,
                 'max',
                 {
@@ -147,7 +147,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.animations.speed,
                 'z',
                 {
@@ -155,7 +155,7 @@ export default class BouncingLogo
                 }
             )
 
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.animations.speed,
                 'y',
                 {

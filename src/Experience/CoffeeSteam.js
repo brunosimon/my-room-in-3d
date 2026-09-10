@@ -54,7 +54,7 @@ export default class CoffeeSteam
 
         if(this.debug)
         {
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model,
                 'color',
                 {
@@ -67,7 +67,7 @@ export default class CoffeeSteam
             })
             
             
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.material.uniforms.uTimeFrequency,
                 'value',
                 {
@@ -75,7 +75,7 @@ export default class CoffeeSteam
                 }
             )
             
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.material.uniforms.uUvFrequency.value,
                 'x',
                 {
@@ -83,7 +83,7 @@ export default class CoffeeSteam
                 }
             )
             
-            this.debugFolder.addInput(
+            this.debugFolder.addBinding(
                 this.model.material.uniforms.uUvFrequency.value,
                 'y',
                 {

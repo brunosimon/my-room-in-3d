@@ -90,21 +90,21 @@ export default class CoffeeSteam
         if(this.debug)
         {
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.model.material.uniforms.uNightMix,
                     'value',
                     { label: 'uNightMix', min: 0, max: 1 }
                 )
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.model.material.uniforms.uNeutralMix,
                     'value',
                     { label: 'uNeutralMix', min: 0, max: 1 }
                 )
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.colors,
                     'tv',
                     { view: 'color' }
@@ -115,14 +115,14 @@ export default class CoffeeSteam
                 })
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.model.material.uniforms.uLightTvStrength,
                     'value',
                     { label: 'uLightTvStrength', min: 0, max: 3 }
                 )
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.colors,
                     'desk',
                     { view: 'color' }
@@ -133,14 +133,14 @@ export default class CoffeeSteam
                 })
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.model.material.uniforms.uLightDeskStrength,
                     'value',
                     { label: 'uLightDeskStrength', min: 0, max: 3 }
                 )
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.colors,
                     'pc',
                     { view: 'color' }
@@ -151,7 +151,7 @@ export default class CoffeeSteam
                 })
 
             this.debugFolder
-                .addInput(
+                .addBinding(
                     this.model.material.uniforms.uLightPcStrength,
                     'value',
                     { label: 'uLightPcStrength', min: 0, max: 3 }

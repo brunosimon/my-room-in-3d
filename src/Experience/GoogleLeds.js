@@ -73,7 +73,7 @@ export default class GoogleLeds
             if(this.debug)
             {
                 this.debugFolder
-                    .addInput(
+                    .addBinding(
                         item,
                         'color',
                         { view: 'color' }

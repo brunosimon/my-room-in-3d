@@ -67,7 +67,7 @@ export default class LoupedeckButtons
             // if(this.debug)
             // {
             //     this.debugFolder
-            //         .addInput(
+            //         .addBinding(
             //             item,
             //             'color',
             //             { view: 'color' }
@@ -94,7 +94,7 @@ export default class LoupedeckButtons
             if(this.debug)
             {
                 this.debugFolder
-                    .addInput(
+                    .addBinding(
                         this.animation.colors,
                         _colorIndex,
                         { view: 'color' }
